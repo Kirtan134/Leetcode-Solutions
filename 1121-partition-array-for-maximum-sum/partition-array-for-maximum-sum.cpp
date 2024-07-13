@@ -3,7 +3,6 @@ private:
     int f(int idx,vector<int>& arr, int k, vector<int>& dp){
         int n = arr.size();
         if(idx==n) return 0;
-        if(dp[idx]!=-1) return dp[idx];
         int maxi=INT_MIN, maxAns=INT_MIN, len=0;
         for(int i=idx;i<min(idx+k,n);i++){
             len++;
@@ -16,7 +15,17 @@ private:
 public:
     int maxSumAfterPartitioning(vector<int>& arr, int k) {
         int n = arr.size();
-        vector<int> dp(n,-1);
-        return f(0,arr,k,dp);
+        vector<int> dp(n+1,0);
+        for(int idx=n-1;idx>=0;idx--){
+            int maxi=INT_MIN, maxAns=INT_MIN, len=0;
+            for(int i=idx;i<min(idx+k,n);i++){
+                len++;
+                maxi=max(maxi,arr[i]);
+                int sum = len*maxi+dp[i+1];
+                maxAns=max(maxAns,sum);
+            }
+            dp[idx]=maxAns;
+        }
+        return dp[0];
     }
 };
