@@ -48,12 +48,12 @@ public:
         vector<int> nseArr = nse(arr,n);
         vector<int> pseeArr = psee(arr,n);
         for(int i=0;i<n;i++){
-            smallest = (smallest + ((ll)arr[i] * ((nseArr[i]-i) * (i-pseeArr[i])))) ;
+            smallest+= ((ll)arr[i] * (nseArr[i]-i) * (i-pseeArr[i])) ;
         }
         vector<int> ngeArr = nge(arr,n);
         vector<int> pgeeArr = pgee(arr,n);
         for(int i=0;i<n;i++){
-            largest = (largest + ((ll)arr[i] * ((ngeArr[i]-i) * (i-pgeeArr[i]))));
+            largest+= ((ll)arr[i] * ((ngeArr[i]-i) * (i-pgeeArr[i])));
         }
         return largest-smallest;
     }
