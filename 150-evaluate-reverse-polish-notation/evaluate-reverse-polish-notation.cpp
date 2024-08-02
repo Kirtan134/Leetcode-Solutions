@@ -4,29 +4,16 @@ private:
 public:
     int evalRPN(vector<string>& tokens) {
         int n = tokens.size();
+        int a,b,temp;
         for(int i=0;i<n;i++){
-            if(tokens[i] == "+"){
+            if(tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "/" || tokens[i] == "*")
+            {
                 int a = st.top(); st.pop();
                 int b = st.top(); st.pop();
-                int temp = b+a;
-                st.push(temp);
-            }
-            else if(tokens[i] == "-"){
-                int a = st.top(); st.pop();
-                int b = st.top(); st.pop();
-                int temp = b-a;
-                st.push(temp);
-            }
-            else if(tokens[i] == "*"){
-                int a = st.top(); st.pop();
-                int b = st.top(); st.pop();
-                int temp = b*a;
-                st.push(temp);
-            }
-            else if(tokens[i] == "/"){
-                int a = st.top(); st.pop();
-                int b = st.top(); st.pop();
-                int temp = b/a;
+                if(tokens[i] == "+") temp=b+a;
+                else if(tokens[i] == "-") temp=b-a;
+                else if(tokens[i]=="*") temp=b*a;
+                else if(tokens[i]=="/") temp=b/a;
                 st.push(temp);
             }
             else{
