@@ -12,7 +12,6 @@ public:
         for(int i=n-1;i>=0;i--){
             time = ((double)(target-car[i].first)/car[i].second);
             while(st.empty() || st.top()<time) st.push(time);
-            cout<<time<<endl;
         }
         return st.size();
     }
