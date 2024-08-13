@@ -8,10 +8,10 @@ public:
             for(int j=i;j<n;j++){
                 freq[s[j]-'a']++;
                 int minFreq = n, maxFreq = 1;
-                for(int k=0;k<26;k++){
-                    if(freq[k]){
-                        minFreq=min(minFreq,freq[k]);
-                        maxFreq=max(maxFreq,freq[k]);
+                for(auto &el: freq){
+                    if(el){
+                        minFreq=min(minFreq,el);
+                        maxFreq=max(maxFreq,el);
                     }
                 }
                 ans+=(maxFreq-minFreq);
