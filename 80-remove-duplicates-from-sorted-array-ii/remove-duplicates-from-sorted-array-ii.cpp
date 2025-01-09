@@ -8,8 +8,7 @@ public:
                 j++; c++;
             }
             for(int k=0;k<min(2,c);k++){
-                nums[i] = nums[j];
-                i++;
+                nums[i++] = nums[j];
             }
             j++;
         }
