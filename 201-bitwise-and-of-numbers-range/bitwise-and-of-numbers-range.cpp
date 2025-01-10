@@ -1,18 +1,12 @@
 class Solution {
 public:
     int rangeBitwiseAnd(int left, int right) {
-        int ans = 0, bit, remainder, diff;
-        for(int i=0;i<32;i++){
-            bit = (left>>i)&1;
-            if(!bit) continue;
-
-            remainder = left % (1 << (i+1));
-            diff = (1LL<<(i+1)) - remainder;
-
-            if(right-left<diff){
-                ans |= (1<<i);
-            }
+        int c = 0;
+        while(left != right){
+            left >>= 1;
+            right >>= 1;
+            c++;
         }
-        return ans;
+        return left << c;
     }
 };
